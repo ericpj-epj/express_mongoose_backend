@@ -1,0 +1,643 @@
+{
+  "_id": {
+    "$oid": "67bed27aa99688db708092f5"
+  },
+  "name": "ADM",
+  "domain": "adm.com",
+  "ingredients": [
+    {
+      "ingredient_name": "Bifidobacterium longum ES1 Probiotic",
+      "description": "ADM’s proprietary Bifidobacterium longum ES1 probiotic may support overall digestive health,\nwhich is demonstrated throughout its portfolio of pre-clinical and clinical evidence.\nBifidobacterium longum ES1 is a probiotic strain isolated from healthy breast-fed infants.\nPre-clinical trials and human clinical trials demonstrate support for digestive health and microbiome-modulating effects of this strain.",
+      "limitations": "None",
+      "application_notes": "For ES1 Probiotic, the better formats would be: Capsules, Stick Packs, powders. \nProbiotics require careful formulation to maintain viability, so encapsulated or shelf-stable powder formats (like stick packs) are generally better options.\n\n• Non-GMO\n• Kosher",
+      "claims": [
+        {
+          "verbatim": "May support overall digestive health.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bf9bd9fc170cc6ead0cd5"
+          }
+        },
+        {
+          "verbatim": "May support digestive health ",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bf9bd9fc170cc6ead0cd6"
+          }
+        },
+        {
+          "verbatim": "May support gastrointestinal health in gluten-sensitive individuals",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Health"
+          ],
+          "_id": {
+            "$oid": "686bf9bd9fc170cc6ead0cd7"
+          }
+        },
+        {
+          "verbatim": "Pre-clinical trials and human clinical trials have demonstrated—via both primary and secondary endpoints—statistically significant results for supporting digestive health, including reduction of occasional diarrhea and microbiome-modulating effects",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support",
+            "Digestive Comfort"
+          ],
+          "_id": {
+            "$oid": "686bf9bd9fc170cc6ead0cd8"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed368a99688db708092fa"
+      }
+    },
+    {
+      "ingredient_name": "Heat-treated (HT) L. gasseri CP2305",
+      "description": "Lactobacillus gasseri is a cutting-edge postbiotic that features near\nlimitless possibilities for formulation.\nThis strain is backed by five clinical trials. These studies showcase its\nefficacy in supporting key aspects relating to stress, mental well-being,\nand exploratory results within sleep quality and total duration.",
+      "limitations": "To be promoted in DS (solid application) and foods (no beverages) ",
+      "application_notes": " Ideal for use in all type of applications (capules, powders, stick packs, gummies, and other food and beverage formats) ",
+      "claims": [
+        {
+          "verbatim": "May help support reduced stress and emotional well-being.",
+          "category": "Stress",
+          "tags": [
+            "Emotional Resilience"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d65"
+          }
+        },
+        {
+          "verbatim": "Exploratory research suggests supplementing your diet with HT L. gasseri CP2305 may be associated with reduced time to fall asleep, improved total duration of sleep, and better sleep efficiency.",
+          "category": "Sleep",
+          "tags": [
+            "Sleep Duration",
+            "Sleep Quality",
+            "Restfulness",
+            "Deep Sleep"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d66"
+          }
+        },
+        {
+          "verbatim": "Significant improvement in self-reported assessments of mental well-being.",
+          "category": "Mood",
+          "tags": [
+            "Positive Outlook"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d67"
+          }
+        },
+        {
+          "verbatim": "May help support a positive mood, stress/anxiety reduction, and overall well-being in healthy young women experiencing premenstrual symptoms.",
+          "category": "Women's Health",
+          "tags": [
+            "Mood Balance",
+            "Menstrual Support"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d68"
+          }
+        },
+        {
+          "verbatim": "May help improve vaginal discharge, enhance skin appearance, and reduce occasional constipation in healthy young women experiencing premenstrual symptoms.",
+          "category": "Women's Health",
+          "tags": [
+            "Menstrual Support"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d69"
+          }
+        },
+        {
+          "verbatim": "May help reduce stress and occasional fatigue associated with exercise.",
+          "category": "Sports Performance",
+          "tags": [
+            "Recovery",
+            "Endurance"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d6a"
+          }
+        },
+        {
+          "verbatim": "May improve stress levels and post-exercise recovery in male athletes.",
+          "category": "Sports Performance",
+          "tags": [
+            "Recovery"
+          ],
+          "_id": {
+            "$oid": "686bfa409fc170cc6ead0d6b"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed531a99688db7080930d"
+      }
+    },
+    {
+      "ingredient_name": "Fibersol® (For Pets)",
+      "description": "Fibersol offers a full line of low-viscosity soluble dietary fiber ingredients made from cornstarch\nand backed by a strong body of clinical evidence. Additionally, because Fibersol is low in viscosity,\nclear in solution, highly soluble and adds no flavor of its own, it can be used in a wide range of foods and\nbeverages without impacting taste or texture.",
+      "limitations": "None",
+      "application_notes": "Prebiotic: Capsules, powders, stick packs, kibble, Baked Treats, tablets, pastes, Soft Chews (hot & cold extrusion), Long-Lasting Chews, semi-moist treats.",
+      "claims": [
+        {
+          "verbatim": "May supports intestinal regularity, fiber-related digestion, improved stool consistency​.",
+          "category": "Gut Health",
+          "tags": [
+            "Regularity",
+            "Digestive Comfort",
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bf9259fc170cc6ead0b88"
+          }
+        },
+        {
+          "verbatim": "May Supports the intestinal flora and modulating the intestinal environment​.",
+          "category": "Gut Health",
+          "tags": [
+            "Prebiotic Support",
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bf9259fc170cc6ead0b89"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed5e8a99688db70809333"
+      }
+    },
+    {
+      "ingredient_name": "BPL1™ - Postbiotic",
+      "description": "BPL1TM postbiotic (Bifidobacterium animalis subsp. lactis CECT 8145) is the heat- treated version of ADM’s award-\nwinning probiotic strain with clinically documented results in aspects related to metabolic health. Clinical evidence\nsuggests BPL1TM postbiotic may help support visceral fat reduction in combination with diet and exercise.",
+      "limitations": "None",
+      "application_notes": "Postbiotic Ideal for use in all type of applications (capules, powders, stick packs, gummies, and other food and beverage formats)  Ideal for • Sports nutrition\n• Better-for-you snacks\n• Beverages\n• Dairy & plant-based chilled or non-chilled\n• Dietary supplements\n• Specialized nutrition",
+      "claims": [
+        {
+          "verbatim": "BPL1™ postbiotic (Bifidobacterium lactis CECT 8145) is ADM’s proprietary, award-winning postbiotic with clinically documented results in aspects related to metabolic health.",
+          "category": "Metabolism",
+          "tags": [
+            "Fat Burn",
+            "Weight Management",
+            "Metabolic Rate"
+          ],
+          "_id": {
+            "$oid": "686c01889fc170cc6ead0df8"
+          }
+        },
+        {
+          "verbatim": "Emerging and in vitro evidence suggests BPL1™ postbiotic- in combination with diet and exercise-may help support visceral fat reduction, a healthy waist circumference and metabolic health pathways",
+          "category": "Metabolism",
+          "tags": [
+            "Fat Burn",
+            "Weight Management"
+          ],
+          "_id": {
+            "$oid": "686c01889fc170cc6ead0df9"
+          }
+        },
+        {
+          "verbatim": "BPL1™ Postbiotic is backed by ADM’s gold-standard human clinical trial and is currently being investigated in additional human clinical trials",
+          "category": "Metabolism",
+          "tags": [
+            "Healthy Digestion"
+          ],
+          "_id": {
+            "$oid": "686c01889fc170cc6ead0dfa"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed646a99688db70809363"
+      }
+    },
+    {
+      "ingredient_name": "B. longum ES1 probiotic (For Pets)",
+      "description": "ES1 (Bifidobacterium longum CECT 7347) is ADM’s novel and proprietary probiotic strain. Emerging data suggests that at 1B CFU Daily Intake, the probiotic ES1 (Bifidobacterium longum CECT 7347) when used by humans may support, Overall gut health, Digestive health, Gastrointestinal health in gluten-sensitive humans.",
+      "limitations": "None",
+      "application_notes": " Probiotic: Capsules, powders, stick packs, sachets, tablets, pastes, Soft Chews (cold extrusion only)",
+      "claims": [
+        {
+          "verbatim": "May help protect against gut barrier disruption and support overall digestive health.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bf93c9fc170cc6ead0c19"
+          }
+        },
+        {
+          "verbatim": "May enhance resilience against inflammation and oxidative stress.",
+          "category": "Inflammation",
+          "tags": [
+            "Antioxidant Support"
+          ],
+          "_id": {
+            "$oid": "686bf93c9fc170cc6ead0c1a"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed6f5a99688db70809396"
+      }
+    },
+    {
+      "ingredient_name": "B. animalis subscp.lactis BPL1 probiotic (For Pets)",
+      "description": "BPL1 (Bifidobacterium animalis subsp. lactis CECT 8145) is ADM’s proprietary, award-winning microbial strain available in probiotic\nand postbiotic forms. Preliminary data suggest that the probiotic form of Bifidobacterium animalis BPL1 may favorably affect body weight and metabolic health.",
+      "limitations": "None",
+      "application_notes": " Probiotic: Capsules, powders, stick packs, sachets, tablets, pastes, Soft Chews (cold extrusion only)",
+      "claims": [
+        {
+          "verbatim": "May be associated with positive gut microbiota modulation.",
+          "category": "Gut Health",
+          "tags": [
+            "Microbiome Diversity"
+          ],
+          "_id": {
+            "$oid": "686c03249fc170cc6ead1040"
+          }
+        },
+        {
+          "verbatim": "Probiotic form associated with an increase in leptin gene expression in leukocytes in dogs.",
+          "category": "Metabolism",
+          "tags": [
+            "Weight Management",
+            "Metabolic Rate"
+          ],
+          "_id": {
+            "$oid": "686c03249fc170cc6ead1041"
+          }
+        },
+        {
+          "verbatim": "May be associated with gut wellbeing.",
+          "category": "Immune Health",
+          "tags": [
+            "Immune Boost"
+          ],
+          "_id": {
+            "$oid": "686c03249fc170cc6ead1042"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bed769a99688db708093d2"
+      }
+    },
+    {
+      "ingredient_name": "Bifidobacterium longum ES1 Postbiotic",
+      "description": "ADM’s proprietary Bifidobacterium longum ES1 postbiotic may support overall digestive health, which is demonstrated throughout its portfolio of pre-clinical and clinical evidence. Pre-clinical trials and human clinical trials demonstrate support for digestive health and microbiome-modulating effects of this strain.",
+      "limitations": "None",
+      "application_notes": "For ES1 Post-biotic, the better formats would be: Powders, Stick Packs, Food and Beverage Formats. Post-biotics are more stable and can tolerate a broader range of environments, making them better suited for food, beverage, and powder-based applications.",
+      "claims": [
+        {
+          "verbatim": "Recent studies have shown that supplementing one’s diet with ES1 postbiotic may support digestive health.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Health"
+          ],
+          "_id": {
+            "$oid": "686c0d489fc170cc6ead1441"
+          }
+        },
+        {
+          "verbatim": "Shown in clinical studies, HT-ES1 has the potential to help support digestive and gastrointestinal health, and it may help support a healthy gut, in non-gluten-sensitive individuals.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support",
+            "Digestive Comfort"
+          ],
+          "_id": {
+            "$oid": "686c0d489fc170cc6ead1442"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bf270ca99688db70809628"
+      }
+    },
+    {
+      "ingredient_name": "BPL1™ - Probiotic",
+      "description": "BPL1TM, a premium probiotic from ADM’s line of microbiome solutions, is specifically formulated to support aspects of metabolic\nhealth. Emerging evidence suggests the use of BPL1TM probiotic may help support weight management in combination with diet\nand exercise. Backed by gold-standard clinical science, ADM’s proprietary, award-winning BPL1TM strain (Bifidobacterium animalis subsp. lactis CECT 8145) fulfills the need for an ingredient that supports overall metabolic health and helps consumers feel their best.",
+      "limitations": "None",
+      "application_notes": "Probiotic strain for application in (capsules , powders and sticks). Ideal for • Sports nutrition • Better-for-you snacks •Dairy & plant-based chilled or non-chilled • Dietary supplements • Specialized nutrition",
+      "claims": [
+        {
+          "verbatim": "Emerging and in-vitro evidence suggests that BPL1™ probiotic may help support weight management and a healthy BMI when combined with diet and exercise, as well as promote metabolic health pathways.",
+          "category": "Metabolism",
+          "tags": [
+            "Fat Burn",
+            "Metabolic Rate",
+            "Weight Management"
+          ],
+          "_id": {
+            "$oid": "686c02389fc170cc6ead0f1b"
+          }
+        },
+        {
+          "verbatim": "ADM’s award-winning BPL1™ probiotic (Bifidobacterium animalis subsp. lactis CECT 8145) targets factors relevant to metabolic health",
+          "category": "Metabolism",
+          "tags": [
+            "Healthy Digestion"
+          ],
+          "_id": {
+            "$oid": "686c02389fc170cc6ead0f1c"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bf2a58a99688db70809739"
+      }
+    },
+    {
+      "ingredient_name": "Fibersol®",
+      "description": "Fibersol offers a full line of low-viscosity soluble dietary fiber ingredients made from cornstarch and backed by a strong body of clinical evidence. Additionally, because Fibersol is low in viscosity, clear in solution, highly soluble and adds no flavor of its own, it can be used in a wide range of foods and beverages without impacting taste or texture.",
+      "limitations": "None",
+      "application_notes": "Ideal for use in (powders, stick packs, and beverage formats, not for use in capsules).\nTEXTURE Minimal viscosity, No texture/mouthfeel changes. TASTE Masks bitterness, No flavor of its own. TOLERANCE Well-tolerated.\n",
+      "claims": [
+        {
+          "verbatim": "Clinical studies show that consuming 4–8g of Fibersol® daily may support gut health by promoting intestinal regularity, relieving occasional constipation, and improving stool consistency.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support",
+            "Regularity",
+            "Digestive Comfort"
+          ],
+          "_id": {
+            "$oid": "686c02d89fc170cc6ead0fac"
+          }
+        },
+        {
+          "verbatim": "Clinical studies show that consuming 3.75g of Fibersol® per serving may help nourish intestinal flora and support a healthy intestinal tract environment.",
+          "category": "Gut Health",
+          "tags": [
+            "Gut Flora Balance",
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686c02d89fc170cc6ead0fad"
+          }
+        },
+        {
+          "verbatim": "Consuming 10g of Fibersol® with a meal may help delay hunger and stimulate appetite-regulating hormones in healthy individuals.",
+          "category": "Metabolism",
+          "tags": [
+            "Appetite Control"
+          ],
+          "_id": {
+            "$oid": "686c02d89fc170cc6ead0fae"
+          }
+        },
+        {
+          "verbatim": "Clinical studies show that consuming 4–6g of Fibersol® with each meal helps blood sugar levels and minimize blood sugar spikes after a meal that are within the normal range in healthy individuals.",
+          "category": "Metabolism",
+          "tags": [
+            "Sugar Metabolism"
+          ],
+          "_id": {
+            "$oid": "686c02d89fc170cc6ead0faf"
+          }
+        },
+        {
+          "verbatim": "Clinical studies show that consuming 5–6g of Fibersol® with each meal helps attenuate the rise in blood triglycerides after a meal that are within the normal range in healthy individuals",
+          "category": "Heart Health",
+          "tags": [
+            "Cholesterol Balance",
+            "Vascular Support"
+          ],
+          "_id": {
+            "$oid": "686c02d89fc170cc6ead0fb0"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bf3ca5a99688db70809bb8"
+      }
+    },
+    {
+      "ingredient_name": "B. animalis subscp.lactis HT-BPL1 postbiotic (For Pets)",
+      "description": "BPL1 (Bifidobacterium animalis subsp. lactis CECT 8145) is ADM’s proprietary, award-winning microbial strain available in probiotic and postbiotic forms. Preliminary data suggest that the probiotic form of Bifidobacterium animalis BPL1 may favorably affect body weight and metabolic health.",
+      "limitations": "None",
+      "application_notes": "Postbiotic: Capsules, powders, stick packs, kibble, Baked Treats, tablets, pastes, Soft Chews (hot & cold extrusion), Long-Lasting Chews, semi-moist treats, wet food.",
+      "claims": [
+        {
+          "verbatim": "Increase beneficial bacteria within the gut of dogs​.",
+          "category": "Gut Health",
+          "tags": [
+            "Microbiome Diversity"
+          ],
+          "_id": {
+            "$oid": "67bf745ea99688db7080a179"
+          }
+        },
+        {
+          "verbatim": "Supports intestinal wellbeing and increases fecal short chain fatty acid content​.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "67bf745ea99688db7080a17a"
+          }
+        },
+        {
+          "verbatim": "Supports immune function in cats.",
+          "category": "Immune Health",
+          "tags": [
+            "Immune Boost"
+          ],
+          "_id": {
+            "$oid": "67bf745ea99688db7080a17b"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bf3e5fa99688db70809c9f"
+      }
+    },
+    {
+      "ingredient_name": "B. longum HT-ES1 postbiotic (For Pets)",
+      "description": "ES1 (Bifidobacterium longum CECT 7347) is ADM’s novel and proprietary probiotic and postbiotic strain. Emerging data suggests that at 1B CFU Daily Intake, ES1 (Bifidobacterium longum CECT 7347) when used by humans may support, Overall gut health, Digestive health, Gastrointestinal health in gluten-sensitive humans.",
+      "limitations": "None",
+      "application_notes": "Postbiotic: Capsules, powders, stick packs, kibble, Baked Treats, tablets, pastes, Soft Chews (hot & cold extrusion), Long-Lasting Chews, semi-moist treats, wet food.",
+      "claims": [
+        {
+          "verbatim": "May be associated with positive gut microbiota modulation.",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "686bb87a9fc170cc6ead00d9"
+          }
+        },
+        {
+          "verbatim": "May be associated with intestinal wellbeing.",
+          "category": "Inflammation",
+          "tags": [
+            "Antioxidant Support"
+          ],
+          "_id": {
+            "$oid": "686bb87a9fc170cc6ead00da"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67bf3f84a99688db70809d35"
+      }
+    },
+    {
+      "ingredient_name": "DE111®",
+      "description": "Stable under a range of temperatures, pH changes, and water activity,\nDE111® is a clinically studied strain of Bacillus subtilis that safely and\neffectively adds in-demand digestive and immune functionality to a\nvariety of applications.\nDE111® has a protective shell which keeps the spore dormant under\nunfavorable conditions. This strong shell allows it to withstand the\nrigors of food and beverage processing, remain on the shelf for\nextended periods of time, and withstand stomach acid until it reaches\nthe right conditions for germination – the intestines, where nutrients\nare absorbed.",
+      "limitations": "N/A",
+      "application_notes": "Can be used in functional beverages, hot drinks, snacks, cereals and cereal bars, confectionery, baked goods, and children's products. DE111® is stable\nunder a range of\ntemperatures,\npH changes, and\nwater activity.  \n• FDA-Notified GRAS ingredient\n• QPS Listed (EU)\n• Non-GMO Project Verified\n• Certified Kosher and Halal\n• Organic\n• Health Canada Non-Novel Food",
+      "claims": [
+        {
+          "verbatim": "Contains probiotic cultures",
+          "category": "Probiotics",
+          "tags": [
+            "Gut Flora Balance"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b693"
+          }
+        },
+        {
+          "verbatim": "Supports healthy gut function",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b694"
+          }
+        },
+        {
+          "verbatim": "Promotes digestive health",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Support"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b695"
+          }
+        },
+        {
+          "verbatim": "Supports regularity",
+          "category": "Gut Health",
+          "tags": [
+            "Regularity"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b696"
+          }
+        },
+        {
+          "verbatim": "Supports immune health ",
+          "category": "Immune Health",
+          "tags": [
+            "Immune Health"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b697"
+          }
+        },
+        {
+          "verbatim": "Supports exercise recovery",
+          "category": "Sports Performance",
+          "tags": [
+            "Recovery"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b698"
+          }
+        },
+        {
+          "verbatim": "Supports digestive and\nimmune health in young\nchildren",
+          "category": "Children's Health",
+          "tags": [
+            "Immune Health",
+            "Digestive Health"
+          ],
+          "_id": {
+            "$oid": "691fb00d1044b8381412b699"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "691faf101044b8381412b552"
+      }
+    },
+    {
+      "ingredient_name": "PreforPro®",
+      "description": "A prebiotic that promotes the growth of healthy bacteria in less time, with a lower dosage and less discomfort than other available solutions. ",
+      "limitations": "",
+      "application_notes": "",
+      "claims": [
+        {
+          "verbatim": "May support the  growth of select beneficial bacteria in the gut.",
+          "category": "Probiotics",
+          "tags": [
+            "Prebiotic Synergy"
+          ],
+          "_id": {
+            "$oid": "691fb2cf1044b8381412b7b5"
+          }
+        },
+        {
+          "verbatim": "Supports stomach\ncomfort",
+          "category": "Gut Health",
+          "tags": [
+            "Digestive Comfort"
+          ],
+          "_id": {
+            "$oid": "691fb2cf1044b8381412b7b6"
+          }
+        },
+        {
+          "verbatim": "Positively modulate the\ngut microbiome",
+          "category": "Gut Health",
+          "tags": [
+            "Gut Flora Balance"
+          ],
+          "_id": {
+            "$oid": "691fb2cf1044b8381412b7b7"
+          }
+        },
+        {
+          "verbatim": "Supports the\ngrowth of select\nbeneficial bacteria\nin the gut, which\nnaturally limits\nthe growth of\nother bacteria when used in combination with select b. lactic probiotic strains.\n",
+          "category": "Gut Health",
+          "tags": [
+            "Gut Flora Balance"
+          ],
+          "_id": {
+            "$oid": "691fb2cf1044b8381412b7b8"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "691fb1461044b8381412b70a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-02-26T08:36:10.422Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-21T01:01:27.253Z"
+  },
+  "__v": 47,
+  "ingredient_supplier_org_id": {
+    "$oid": "690aabde8d5caa2cde09ebfc"
+  }
+}
