@@ -7,7 +7,8 @@ export const adminRequired = async (req, res, next) => {
     /* ==============================
        1️⃣ Validate Admin Secret
     ============================== */
-    const providedSecret = req.headers["x-admin-secret"]?.trim();
+    // Use req.get() which is case-insensitive and safer than direct indexing
+    const providedSecret = req.get("x-admin-secret")?.trim();
 
     if (!providedSecret) {
       return res.status(403).json({
@@ -34,7 +35,7 @@ export const adminRequired = async (req, res, next) => {
     /* ==============================
        2️⃣ Validate JWT Token
     ============================== */
-    const authHeader = req.headers.authorization?.trim();
+    const authHeader = req.get("authorization")?.trim();
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({

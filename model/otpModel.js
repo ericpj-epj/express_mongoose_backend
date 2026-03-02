@@ -6,7 +6,6 @@ const otpSchema = new mongoose.Schema({
   purpose: { type: String, enum: ["email_confirmation", "password_reset"] }, // 'email_confirmation' or 'password_reset'
   expires_at: { type: Date, required: true },
   used: { type: Boolean, default: false },
-  created_at: { type: Date, default: Date.now },
 });
 
 export default mongoose.model("OTP", otpSchema);

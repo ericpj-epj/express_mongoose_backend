@@ -2,12 +2,13 @@ import Member from "../model/membersModel.js";
 // import { sendOtpEmail } from "../controller/authController.js";
 import mongoose from "mongoose";
 import { sendEmail } from "../utils/sendEmail.js";
-import { hashOtp, generateOtpCode, validateOtp } from "../utils/otps.js";
-import { isOtpRateLimited } from "../utils/rateLimit.js";
+import { hashOtp, generateOtpCode } from "../utils/otps.js";
+import { isOtpRateLimited } from "../middleware/rateLimit.js";
 import { isValidEmail } from "../utils/domainUtils.js";
-// import { generateOtpCode, hashOtp } from "../utils/authUtils.js";
+// import { generateOtpCode, hashOtp } from "../middleware/authUtils.js";
 import OTP from "../model/otpModel.js";
 import Organizations from "../model/organizationsModel.js";
+import AppError from "../utils/AppError.js";
 
 export const updateMemberStatus = async (req, res) => {
   try {
@@ -16,18 +17,12 @@ export const updateMemberStatus = async (req, res) => {
 
     // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(member_id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid member id",
-      });
+      throw new AppError("Member not found", 404, "MEMBER_NOT_FOUND");
     }
 
     // Validate status input
     if (!status) {
-      return res.status(400).json({
-        success: false,
-        message: "Status is required",
-      });
+      throw new AppError("Status is required", 400, "STATUS_REQUIRED");
     }
 
     // Update member
@@ -41,10 +36,7 @@ export const updateMemberStatus = async (req, res) => {
     );
 
     if (!updated) {
-      return res.status(404).json({
-        success: false,
-        message: "Member not found",
-      });
+      throw new AppError("Member not found", 404, "MEMBER_NOT_FOUND");
     }
 
     return res.json({
@@ -52,10 +44,12 @@ export const updateMemberStatus = async (req, res) => {
       message: "Member status updated successfully",
     });
   } catch (error) {
-    console.error("Update member status error:", error);
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -63,42 +57,29 @@ export const updateMemberStatus = async (req, res) => {
 export const resetMemberPassword = async (req, res) => {
   try {
     const member_id = req.params.id;
-    console.log("Reset password for member ID:", member_id);
+
     // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(member_id)) {
-      return res.status(404).json({
-        success: false,
-        error: "MEMBER_NOT_FOUND",
-        message: "Member doesn't exist",
-      });
+      throw new AppError("Member doesn't exist", 404, "MEMBER_NOT_FOUND");
     }
 
     const member = await Member.findById(member_id);
 
     if (!member) {
-      return res.status(404).json({
-        success: false,
-        error: "MEMBER_NOT_FOUND",
-        message: "Member doesn't exist",
-      });
+      throw new AppError("Member doesn't exist", 404, "MEMBER_NOT_FOUND");
     }
 
-    if (isOtpRateLimited(member.email, "Reset Password") >= 3) {
-      return res.status(429).json({
-        success: false,
-        error: "VALIDATION_ERROR",
-        message: "Rate limit exceeded",
-      });
+    if ((await isOtpRateLimited(member.email, "Reset Password")) >= 3) {
+      throw new AppError("Rate limit exceeded", 429, "RATE_LIMIT_EXCEEDED");
     }
+
     if (!isValidEmail(member.email)) {
-      return res.status(400).json({
-        success: false,
-        error: { code: "VALIDATION_ERROR", message: "Invalid email format" },
-      });
+      throw new AppError("Invalid email format", 400, "VALIDATION_ERROR");
     }
+
     const otpCode = generateOtpCode(6);
     const otpHash = hashOtp(otpCode);
-    const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 15 minutes
+    const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
     const otp = new OTP({
       email: member.email,
       otp_code: otpHash,
@@ -116,9 +97,13 @@ export const resetMemberPassword = async (req, res) => {
     });
   } catch (error) {
     console.error("Reset member password error:", error);
+
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -129,37 +114,34 @@ export const getMemberAccess = async (req, res) => {
 
     // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(member_id)) {
-      return res.status(404).json({
-        success: false,
-        error: {
-          code: "MEMBER_NOT_FOUND",
-          message: "Member doesn't exist",
-        },
-      });
+      throw new AppError("Invalid member ID format", 400, "VALIDATION_ERROR");
     }
 
-    const member = await Member.findById(member_id);
+    const member = await Member.findById(member_id)
+      .select("organization_id")
+      .lean();
+
+    if (!member) {
+      throw new AppError("Member not found", 404, "MEMBER_NOT_FOUND");
+    }
 
     const organizationAccess = await Organizations.findById(
       member.organization_id,
     ).select("apps_and_tools");
 
-    if (!member) {
-      return res.status(404).json({
-        success: false,
-        message: "Member not found",
-      });
-    }
-
     return res.json({
       success: true,
+      message: "Member access fetched successfully",
       access: organizationAccess,
     });
   } catch (error) {
     console.error("Get member access error:", error);
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -169,13 +151,7 @@ export const getMemberProfile = async (req, res) => {
     const member_id = req.body.id;
 
     if (!mongoose.Types.ObjectId.isValid(member_id)) {
-      return res.status(404).json({
-        success: false,
-        error: {
-          code: "MEMBER_NOT_FOUND",
-          message: "Member doesn't exist",
-        },
-      });
+      throw new AppError("Member not found", 404, "MEMBER_NOT_FOUND");
     }
 
     const memberProfile = await Member.findById(member_id);
@@ -192,13 +168,16 @@ export const getMemberProfile = async (req, res) => {
     };
     return res.json({
       success: true,
+      message: "Member profile fetched successfully",
       member: parsedMemberProfile,
     });
-  } catch (err) {
-    console.error("Get member profile error:", error);
+  } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -209,37 +188,33 @@ export const getCurrentMemberAccess = async (req, res) => {
 
     // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(member_id)) {
-      return res.status(404).json({
-        success: false,
-        error: {
-          code: "MEMBER_NOT_FOUND",
-          message: "Member doesn't exist",
-        },
-      });
+      throw new AppError("Invalid member ID format", 400, "VALIDATION_ERROR");
     }
 
-    const member = await Member.findById(member_id);
+    const member = await Member.findById(member_id)
+      .select("organization_id")
+      .lean();
 
+    if (!member) {
+      throw new AppError("Member not found", 404, "MEMBER_NOT_FOUND");
+    }
     const memberAccess = await Organizations.findById(
       member.organization_id,
     ).select("apps_and_tools");
 
-    if (!member) {
-      return res.status(404).json({
-        success: false,
-        message: "Member not found",
-      });
-    }
-
     return res.json({
       success: true,
+      message: "Member access fetched successfully",
       access: memberAccess,
     });
   } catch (error) {
     console.error("Get member access error:", error);
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };

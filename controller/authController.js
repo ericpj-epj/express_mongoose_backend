@@ -1,15 +1,15 @@
 import bcrypt from "bcrypt";
 import { generateJwt } from "../utils/jwtUtils.js";
-import { adminRequired } from "../utils/authUtils.js";
+import { adminRequired } from "../middleware/authUtils.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import { generateOtpCode, hashOtp, validateOtp } from "../utils/otps.js";
-import { isOtpRateLimited } from "../utils/rateLimit.js";
+import { isOtpRateLimited } from "../middleware/rateLimit.js";
 import Member from "../model/membersModel.js";
 import OTP from "../model/otpModel.js";
 import { findOrgByEmailDomain, isValidEmail } from "../utils/domainUtils.js";
 
 //request otp function
-export const RequestOTp = async (req, res) => {
+export const requestOtp = async (req, res) => {
   const { email, purpose } = req.body;
 
   // Validate inputs
@@ -72,10 +72,10 @@ export const RequestOTp = async (req, res) => {
     }
   }
   // Generate and store OTP
-  // bring back to 15 mins the expiresAt after testing
+
   const otpCode = generateOtpCode(6);
   const otpHash = hashOtp(otpCode);
-  const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 15 minutes
+  const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
   const otp = new OTP({
     email: normalizedEmail,
     otp_code: otpHash,
@@ -164,7 +164,7 @@ export const signUp = async (req, res) => {
   };
 
   try {
-    const result = await Member.insertOne(newMember);
+    const result = await Member.create(newMember);
 
     // Mark OTP as used
     await OTP.updateOne({ _id: otpDoc._id }, { $set: { used: true } });
@@ -178,7 +178,7 @@ export const signUp = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Account created successfully",
-      member_id: result.insertedId,
+      member_id: result._id.toString(),
       token,
     });
   } catch (err) {
@@ -264,7 +264,6 @@ export const signIn = async (req, res) => {
     { _id: member._id },
     { $set: { last_login: now, updated_at: now } },
   );
-
   const token = generateJwt(member);
 
   res.json({

@@ -14,8 +14,6 @@ const memberSchema = new mongoose.Schema({
     default: "pending",
   }, // 'active', 'inactive', 'pending'
   last_login: { type: Date, default: null },
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
   role: { type: String, enum: ["member", "admin"], default: "member" }, // 'member' or 'admin'
 });
 

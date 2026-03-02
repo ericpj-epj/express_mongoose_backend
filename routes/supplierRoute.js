@@ -3,7 +3,7 @@ import {
   fetchSuppliers,
   fetchSuppliersDetail,
   addSupplier,
-  UpdateSupplier,
+  updateSupplier,
   deleteSupplier,
 } from "../controller/supplierController.js";
 import {
@@ -11,16 +11,38 @@ import {
   editIngredient,
   deleteIngredient,
 } from "../controller/ingredientController.js";
-import { adminRequired } from "../utils/authUtils.js";
+import { adminRequired } from "../middleware/authUtils.js";
+import { sanitizeBody } from "../middleware/sanitizeBody.js";
+
 const router = express.Router();
 
-router.get("/", fetchSuppliers);
-router.get("/:id", fetchSuppliersDetail);
-router.post("/", addSupplier);
-router.patch("/:id", UpdateSupplier);
-router.delete("/:id", deleteSupplier);
-router.post("/:id/ingredients", addIngredient);
-router.put("/:id/ingredients/:ingredientId", editIngredient);
+router.get("/", adminRequired, fetchSuppliers);
+router.get("/:id", adminRequired, fetchSuppliersDetail);
+router.post(
+  "/",
+  adminRequired,
+  sanitizeBody(["name", "description", "contact_info"]),
+  addSupplier,
+);
+router.patch(
+  "/:id",
+  adminRequired,
+  sanitizeBody(["name", "description", "contact_info"]),
+  updateSupplier,
+);
+router.delete("/:id", adminRequired, deleteSupplier);
+router.post(
+  "/:id/ingredients",
+  adminRequired,
+  sanitizeBody(["name", "description", "category"]),
+  addIngredient,
+);
+router.put(
+  "/:id/ingredients/:ingredientId",
+  adminRequired,
+  sanitizeBody(["name", "description", "category"]),
+  editIngredient,
+);
 router.delete(
   "/:id/ingredients/:ingredientId",
 

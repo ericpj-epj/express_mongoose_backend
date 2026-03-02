@@ -10,7 +10,10 @@ export const fetchSuppliers = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const perPage = parseInt(req.query.per_page) || 10;
-    const supplierImport = await Supplier.find();
+
+    const supplierImport = await Supplier.find()
+      .limit(perPage)
+      .skip((page - 1) * perPage);
     const parsedSuppliers = supplierImport.map((supplier) => {
       const categorySet = new Set();
 
@@ -51,6 +54,7 @@ export const fetchSuppliers = async (req, res) => {
 
     res.json({
       success: true,
+      message: "Suppliers fetched successfully",
       data: {
         suppliers: parsedSuppliers.slice(start, start + perPage),
         pagination: {
@@ -64,7 +68,10 @@ export const fetchSuppliers = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Failed to load suppliers",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -81,7 +88,7 @@ export const fetchSuppliersDetail = async (req, res) => {
     const supplierImport = await Supplier.findOne({ _id: supplierId });
 
     if (!supplierImport) {
-      return res.status(404).json({ message: "Supplier not found" });
+      throw new AppError("Supplier not found", 404, "SUPPLIER_NOT_FOUND");
     }
 
     const parsedSupplier = {
@@ -106,11 +113,19 @@ export const fetchSuppliersDetail = async (req, res) => {
       updated_at: supplierImport.updatedAt?.$date,
     };
 
-    res.json(parsedSupplier);
+    res.json({
+      success: true,
+      message: "Supplier detail fetched successfully",
+      supplier: parsedSupplier,
+    });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Failed to load supplier detail",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -127,9 +142,7 @@ export const addSupplier = async (req, res) => {
     const supplierExists = await Supplier.findOne({ name });
 
     if (supplierExists) {
-      return res.status(400).json({
-        message: "Supplier already exists",
-      });
+      throw new AppError("Supplier already exists", 400, "SUPPLIER_EXISTS");
     }
 
     const newSupplier = new Supplier({ name, domain });
@@ -138,7 +151,10 @@ export const addSupplier = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Failed to add supplier",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -149,7 +165,7 @@ export const addSupplier = async (req, res) => {
  * @param {Object} res - Express response object
  * @returns {Object} JSON response with updated supplier or 404 if not found
  */
-export const UpdateSupplier = async (req, res) => {
+export const updateSupplier = async (req, res) => {
   try {
     const supplierId = req.params.id;
     const updateData = req.body;
@@ -160,13 +176,21 @@ export const UpdateSupplier = async (req, res) => {
       { new: true },
     );
     if (!updatedSupplier) {
-      return res.status(404).json({ message: "Supplier not found" });
+      throw new AppError("Supplier not found", 404, "SUPPLIER_NOT_FOUND");
     }
-    res.json(updatedSupplier);
+    res.json({
+      success: true,
+      message: "Supplier updated successfully",
+      supplier: updatedSupplier,
+    });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Failed to update supplier",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
@@ -180,18 +204,18 @@ export const UpdateSupplier = async (req, res) => {
 export const deleteSupplier = async (req, res) => {
   try {
     const supplierId = req.params.id;
-    const deletedSupplpier = await Supplier.findByIdAndDelete(supplierId);
-    if (!deletedSupplpier) {
-      return res.status(404).json({
-        message: "Supplier not found",
-        error: error.message,
-      });
+    const deletedSupplier = await Supplier.findByIdAndDelete(supplierId);
+    if (!deletedSupplier) {
+      throw new AppError("Supplier not found", 404, "SUPPLIER_NOT_FOUND");
     }
     res.status(200).json({ message: "Supplier deleted successfully" });
   } catch (error) {
     res.status(500).json({
       message: "Failed to delete supplier",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };

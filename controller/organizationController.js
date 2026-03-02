@@ -51,7 +51,7 @@ export const fetchOrganization = async (req, res) => {
     name: org.name,
     description: org.description,
     allowed_domains: org.allowed_domains || [],
-    apps_and_tools: org.apps_and_tools || appsAndToolsDefaults({}),
+    apps_and_tools: org.apps_and_tools,
     member_count: org.member_count,
   }));
 
@@ -59,6 +59,7 @@ export const fetchOrganization = async (req, res) => {
 
   res.json({
     success: true,
+    message: "Organizations fetched successfully",
     organizations,
     pagination: { page, limit, total, pages },
   });
@@ -93,6 +94,7 @@ export const getOrganizationMembers = async (req, res) => {
 
     return res.json({
       success: true,
+      message: "Organization members fetched successfully",
       members,
       pagination: {
         page,
@@ -112,54 +114,64 @@ export const getOrganizationMembers = async (req, res) => {
 
 export const fetchOrganizationsDetail = async (req, res) => {
   try {
-    const OrganizationId = req.params.org_id;
+    const organizationId = req.params.org_id;
 
-    const OrganizationImport = await Organization.findById(OrganizationId);
+    const organizationImport = await Organization.findById(organizationId);
 
-    if (!OrganizationImport) {
+    if (!organizationImport) {
       return res.status(404).json({ message: "Organization not found" });
     }
 
     const parsedOrganization = {
-      _id: String(OrganizationImport._id),
-      name: OrganizationImport.name,
-      description: OrganizationImport.description,
-      allowed_domains: OrganizationImport.allowed_domains,
+      _id: String(organizationImport._id),
+      name: organizationImport.name,
+      description: organizationImport.description,
+      allowed_domains: organizationImport.allowed_domains,
       apps_and_tools: {
-        leadlogic: OrganizationImport.apps_and_tools.leadlogic,
-        signals: OrganizationImport.apps_and_tools.signals,
-        skutrition: OrganizationImport.apps_and_tools.skutrition,
-        internal_tools: OrganizationImport.apps_and_tools.internal_tools,
+        leadlogic: organizationImport.apps_and_tools.leadlogic,
+        signals: organizationImport.apps_and_tools.signals,
+        skutrition: organizationImport.apps_and_tools.skutrition,
+        internal_tools: organizationImport.apps_and_tools.internal_tools,
       },
-      created_at: OrganizationImport.createdAt?.$date,
-      updated_at: OrganizationImport.updatedAt?.$date,
+      created_at: organizationImport.createdAt?.$date,
+      updated_at: organizationImport.updatedAt?.$date,
     };
 
-    res.json(parsedOrganization);
+    res.json({
+      success: true,
+      message: "Organization detail fetched successfully",
+      organization: parsedOrganization,
+    });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Failed to load Organization detail",
       error: error.message,
     });
   }
 };
 
-export const UpdateOrganization = async (req, res) => {
+export const updateOrganization = async (req, res) => {
   try {
-    const OrganizationId = req.params.org_id;
+    const organizationId = req.params.org_id;
     const updateData = req.body;
-    console.log(OrganizationId);
+
     const updatedOrganization = await Organization.findByIdAndUpdate(
-      OrganizationId,
+      organizationId,
       updateData,
       { new: true },
     );
     if (!updatedOrganization) {
       return res.status(404).json({ message: "Organization not found" });
     }
-    res.json(updatedOrganization);
+    res.json({
+      success: true,
+      message: "Organization updated successfully",
+      organization: updatedOrganization,
+    });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Failed to update Organization",
       error: error.message,
     });
@@ -167,20 +179,24 @@ export const UpdateOrganization = async (req, res) => {
 };
 export const deleteOrganization = async (req, res) => {
   try {
-    const OrganizationId = req.params.org_id;
-    const deletedSupplpier =
-      await Organization.findByIdAndDelete(OrganizationId);
-    if (!deletedSupplpier) {
-      return res.status(404).json({
-        message: "Organization not found",
-        error: error.message,
-      });
+    const organizationId = req.params.org_id;
+    const deletedSupplier =
+      await Organization.findByIdAndDelete(organizationId);
+    if (!deletedSupplier) {
+      throw new AppError(
+        "Organization not found",
+        404,
+        "ORGANIZATION_NOT_FOUND",
+      );
     }
     res.status(200).json({ message: "Organization deleted successfully" });
   } catch (error) {
     res.status(500).json({
       message: "Failed to delete Organization",
-      error: error.message,
+      error: {
+        code: error.code || "SERVER_ERROR",
+        message: error.message || "Server error",
+      },
     });
   }
 };
