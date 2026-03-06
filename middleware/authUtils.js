@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const adminRequired = async (req, res, next) => {
   try {
+    console.log("Request Headers:", req.headers); // Debugging line to check headers
     /* ==============================
        1️⃣ Validate Admin Secret
     ============================== */

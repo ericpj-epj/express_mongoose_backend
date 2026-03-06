@@ -13,7 +13,11 @@ import { errorHandler } from "./middleware/errorHandler.js";
 const app = express();
 dotenv.config();
 app.use(bodyParser.json());
-const allowedOrigins = ["http://localhost:3000", "http://localhost:8000"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -28,9 +32,11 @@ const corsOptions = {
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-admin-secret"],
 };
-app.use(errorHandler);
 app.use(cors(corsOptions));
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/crud";
 
